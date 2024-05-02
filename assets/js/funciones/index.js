@@ -1,0 +1,13 @@
+export { suma } from "./suma.js";
+export { resta } from "./resta.js";
+export { multiplicacion } from "./multiplicacion.js";
+export { division } from "./division.js";
+export { potencia } from "./potencia.js";
+export { areaTriangulo } from "./areaTriangulo.js";
+export { radicacion } from "./radicacion.js";
+export { perimetroTriangulo } from "./perimetroTriangulo.js";
+export { perimetroCuadrado } from "./perimetroCuadrado.js";
+export { areaCuadrado } from "./areaCuadrado.js";
+export { areaRectangulo } from "./areaRectangulo.js";
+export { perimetroRectangulo } from "./perimetroRectangulo.js";
+export { showCount } from "./showCount.js";
