@@ -1,28 +1,24 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import { conn } from "../config/database.js";
 
-export const Usuarios = conn.define("Usuarios", {
-    id_usuario: {
+export const Curso = conn.define("Curso", {
+    id_curso: {
         type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
-        allowNull: false
-    },
-    correo: {
-        type: DataTypes.STRING,
-        allowNull: false
     },
     nombre: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    apellido: {
+    descripcion: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    contrasena: {
+    duracion: {
         type: DataTypes.STRING,
         allowNull: false
     }
-}, {
+},{
     timestamps: true
 })
