@@ -13,7 +13,7 @@ app.listen(PORT, () => {
 })
 
 conn.authenticate()
-    .then(()=> {
+    .then(() => {
         return conn.sync()
     })
     .then(() => console.log("Conexión establecida..."))
