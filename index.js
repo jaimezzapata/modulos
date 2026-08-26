@@ -1,8 +1,6 @@
 import express from 'express'
 import { conn } from './src/config/database.js'
-import { Usuarios } from './src/models/ModelUsuario.js'
-import { Matricula } from './src/models/ModelMatricula.js'
-import { Curso } from './src/models/ModelCurso.js'
+import {Curso, Matricula, Usuarios} from "./src/models/Relaciones.js"
 
 const app = express()
 
@@ -22,4 +20,3 @@ conn.authenticate()
     .catch((error) => console.log(error))
 
 
-    
