@@ -3,6 +3,8 @@ import { conn } from './src/config/database.js'
 import {Curso, Matricula, Usuarios} from "./src/models/Relaciones.js"
 
 const app = express()
+app.use(express.json())
+
 
 const PORT = 3000
 const SERVER = "http://localhost:"
@@ -18,5 +20,3 @@ conn.authenticate()
     })
     .then(() => console.log("Conexión establecida..."))
     .catch((error) => console.log(error))
-
-
