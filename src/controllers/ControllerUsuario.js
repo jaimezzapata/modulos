@@ -11,7 +11,7 @@ export function crear(req, res) {
 }
 
 export function listar(req, res) {
-    ListarUsuarios()
+    ListarUsuarios(req.params.id)
     .then((response)=>{
         res.status(200).json(response)
     })
@@ -19,3 +19,24 @@ export function listar(req, res) {
         res.status(500).json({error: error.message})
     })
 }
+
+export function editar(req, res) {
+    modificarUsuario(req.body, req.params.id)
+    .then((response)=>{
+        res.satus(201).json({message: "El usuario quedo nitido"})
+    })
+    .catch((error) =>{
+        res.status(400).json({error: error.message})
+    })
+}
+
+export function eliminar(req, res) {
+    modificarUsuario(req.params.id)
+    .then((response)=>{
+        res.satus(201).json({message: "Usuario eliminado " + response})
+    })
+    .catch((error) =>{
+        res.status(400).json({error: error.message})
+    })
+}
+
