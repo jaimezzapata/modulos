@@ -14,7 +14,7 @@ export function crearUsuario(data) {
     return Usuarios.create(data)
 }
 
-export function obterUsuarios(data) {
+export function obtenerUsuarios(data) {
     return Usuarios.findAll(data)
 }
 

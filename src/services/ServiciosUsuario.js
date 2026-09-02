@@ -1,17 +1,33 @@
-import { crearUsuario, obterUsuarios, eliminarUsuario, actualizarUsuario, obtenerUsuarioCorreo } from "../repositories/RepositoryUsuario.js";
+import { crearUsuario, obtenerUsuarios, eliminarUsuario, actualizarUsuario, obtenerUsuarioCorreo } from "../repositories/RepositoryUsuario.js";
 
 export function registrarUsuario(data) {
+    if (!data.correo || !data.nombre || !data.apellido || !data.contrasena) {
+        return new Promise.reject(new Error("Campos incompletos..."))
+    }
     return crearUsuario(data)
 }
 
 export function listarUsaurios() {
-    return obterUsuarios()
+    return obtenerUsuarios()
 }
 
-export function modificarUsaurio(data, id) {
+export function modificarUsuario(data, id) {
+    if (!id) {
+        return new Promise.reject(new Error("El ID es obligatorio..."))
+    }
     return actualizarUsuario(data, id)
 }
 
 export function borrarUsuario(id) {
+    if (!id) {
+        return new Promise.reject(new Error("El ID es obligatorio..."))
+    }
     return eliminarUsuario(id)
+}
+
+export function consultarUsuarioCorreo(correo) {
+    if (correo) {
+        return new Promise.reject(new Error("Correo obligatorio..."))
+    }
+    return obtenerUsuarioCorreo(correo)
 }
