@@ -15,19 +15,43 @@
    npm run dev
    ```
 
-## 🛤️ Endpoints Principales (Fase Inicial)
+## 🛤️ Endpoints Principales y Modelos
 
-### Usuarios (`/api/users`)
-- `GET /api/users` - Obtiene la lista de todos los usuarios.
-- `GET /api/users/:id` - Obtiene los detalles de un usuario específico.
-- `POST /api/users` - Crea un nuevo usuario (estudiante o profesor).
-- `PUT /api/users/:id` - Actualiza la información del usuario.
-- `DELETE /api/users/:id` - Elimina o desactiva un usuario.
+### 📚 Modelos de Base de Datos
 
-### Cursos (`/api/courses`)
-- `GET /api/courses` - Lista todos los cursos disponibles.
-- `POST /api/courses` - Crea un nuevo curso.
-- `POST /api/courses/:id/enroll` - Inscribe un estudiante en un curso (ejemplo de lógica cruzada).
+#### Curso
+- **id_curso** (Integer, Primary Key)
+- **nombre** (String)
+- **descripcion** (String)
+- **duracion** (String)
+
+#### Usuario
+- **id_usuario** (Integer, Primary Key)
+- **correo** (String)
+- **nombre** (String)
+- **apellido** (String)
+- **contrasena** (String)
+
+#### Matricula (Tabla Intermedia)
+- **id_matricula** (Integer, Primary Key)
+- **id_usuario** (Integer, Foreign Key)
+- **id_curso** (Integer, Foreign Key)
+- **fecha_inicio** (Date-Time)
+- **fecha_fin** (Date-Time)
+
+### 👥 Usuarios (`/api/usuarios`)
+- `GET /api/usuarios` - Obtener lista de todos los usuarios.
+- `POST /api/usuarios` - Crear un nuevo usuario.
+- `PUT /api/usuarios/:id` (o `PATCH`) - Actualizar un usuario existente.
+- `DELETE /api/usuarios/:id` - Eliminar un usuario.
+
+### 🎓 Cursos (`/api/cursos`)
+- `GET /api/cursos` - Obtener lista de todos los cursos.
+- `POST /api/cursos` - Crear un nuevo curso.
+- `PUT /api/cursos/:id` (o `PATCH`) - Actualizar un curso existente.
+- `DELETE /api/cursos/:id` - Eliminar un curso.
+
+*(La documentación detallada en formato OpenAPI/Swagger se puede consultar de forma interactiva ejecutando el proyecto y accediendo a la ruta `/docs` del servidor).*
 
 ## 📝 Flujo de Trabajo (Ejemplo de Petición)
 
