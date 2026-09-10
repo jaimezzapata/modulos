@@ -5,9 +5,13 @@ import { router_curso } from './src/router/RouterCursos.js'
 import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Leer el JSON usando FS para evitar problemas de bundlers en Serverless
-const swaggerPath = path.resolve(process.cwd(), 'swagger.json');
+const swaggerPath = path.join(__dirname, 'swagger.json');
 const swaggerDoc = JSON.parse(fs.readFileSync(swaggerPath, 'utf8'));
 
 const app = express()
