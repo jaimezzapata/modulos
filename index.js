@@ -9,15 +9,20 @@ const app = express()
 app.use(express.json())
 app.use(router_usuario)
 app.use(router_curso)
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
-const PORT = 3000
+// IMPORTANTE: Usar un CDN para el CSS de Swagger en Vercel
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css";
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, { customCssUrl: CSS_URL }));
+
+const PORT = process.env.PORT || 3000
 const SERVER = "http://localhost:"
 const URL = SERVER + PORT
 
-app.listen(PORT, () => {
-    console.log("Servidor funcionando de forma correcta. URL: " + URL)
-})
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log("Servidor funcionando de forma correcta. URL: " + URL)
+    })
+}
 
 conn.authenticate()
     .then(() => {
@@ -26,4 +31,4 @@ conn.authenticate()
     .then(() => console.log("Conexión establecida..."))
     .catch((error) => console.log(error))
 
-
+export default app;
